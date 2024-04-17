@@ -20,7 +20,7 @@ app.use(
       "https://memories-pro-client.vercel.app",
       "https://memories-pro-ebon.vercel.app"
     ],
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET","PATCH","PUT","DELETE"],
     credentials: true,
   })
 );
