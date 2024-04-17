@@ -17,6 +17,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://memories-2yicwymqw-priyank1s-projects-8e251b55.vercel.app",
+      "https://memories-pro-client.vercel.app"
     ],
     methods: ["POST", "GET"],
     credentials: true,
