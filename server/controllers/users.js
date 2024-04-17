@@ -31,7 +31,8 @@ export const signin = async (req,res)=>{
 
 export const signup = async (req,res)=>{
 
-    const {email,password,firstName,lastName} = req.body;
+    const {email,password,firstName,lastName,confirmPassword} = req.body;
+    console.log(email,firstName,lastName)
     try{
              const existingUser = await User.findOne({email});
 
@@ -41,14 +42,16 @@ export const signup = async (req,res)=>{
 
             const hashedPassword = await bcrypt.hash(password,12);
 
-            const result = await User.create({email,password:hashedPassword,name:`${firstName} ${lastName}`});
+            const result = await User.create({email,password:hashedPassword,firstName:`${firstName}`,lastName:` ${lastName}`});
+           
             const token= jwt.sign({email : result.email , id:result._id},'test',{expiresIn:"1h"});
 
             res.status(200).json({result,token });
     }
     catch(error)
     {
-        res.status(500).json({message:"Something went Wrong"});
+        res.status(500).json({message:"Something went Wrong at User Creation"});
+        console.log(error)
     }
     
 }
